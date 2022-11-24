@@ -33,7 +33,7 @@ class Adapter(val state: State, private val spawnProbs:Int){
             asteroid.size,
             asteroid.movementVector.rotation,
             ElementColliderType.Elliptical,
-            ImageRef("paperBall", asteroid.size, asteroid.size)
+            asteroid.color
         )
     }
 

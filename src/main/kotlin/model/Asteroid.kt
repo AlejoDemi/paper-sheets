@@ -2,20 +2,32 @@ package model
 
 import edu.austral.ingsis.starships.model.Coordinates
 import edu.austral.ingsis.starships.model.Vector
+import edu.austral.ingsis.starships.ui.ImageRef
 
 data class Asteroid (
     val life: Int,
     val size: Double,
     val asteroidId: String,
     val position: Coordinates,
-    val movementVector: Vector
+    val movementVector: Vector,
+    val color: ImageRef
 ) :  Movable {
 
     override fun collide(collider: Movable): Asteroid {
+        val newSize = (if (size>100.0){size-10}else{size})
         return when(collider){
             is Starship -> this;
-            is Bullet -> copy(life= life-(collider as Bullet).damage,size= (if (size>80.0){size-10}else{size}));
+            is Bullet -> copy(life= life-(collider as Bullet).damage,size= newSize,color=ImageRef(pickRandomColor(),newSize,newSize));
             else -> this
+        }
+    }
+
+    private fun pickRandomColor():String{
+        val num = (0..2).random()
+        return when(num){
+            0-> "blueBalloon"
+            1-> "redBalloon"
+            else -> "greenBalloon"
         }
     }
 

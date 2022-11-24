@@ -4,7 +4,7 @@ import edu.austral.ingsis.starships.model.ClassicGun
 import edu.austral.ingsis.starships.model.Coordinates
 import edu.austral.ingsis.starships.ui.ImageRef
 import javafx.scene.input.KeyCode
-import model.DoubleGun
+import model.*
 
 // SIZE
 val WIDTH = 1500.0
@@ -45,6 +45,7 @@ val PLAYER_PAUSE = KeyCode.P
 
 //GUNS
 val SOLO_GUN = DoubleGun()
+val ALT_GUN = TripleGun()
 val DUO_1_GUN = ClassicGun()
 val DUO_2_GUN = ClassicGun()
 

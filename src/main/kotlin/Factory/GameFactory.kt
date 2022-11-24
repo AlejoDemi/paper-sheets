@@ -2,6 +2,7 @@ package Factory
 import model.*
 import edu.austral.ingsis.starships.model.Coordinates
 import edu.austral.ingsis.starships.model.Vector
+import edu.austral.ingsis.starships.ui.ImageRef
 import utils.*
 
 
@@ -50,7 +51,7 @@ fun duoGame():State{
         "s2",
         Vector(0.0,0.0),
         RED_PAPER_PLANE,
-        DUO_2_GUN
+        ALT_GUN
     )
     val movables = listOf<Movable>(starship1,starship2)
     val state =  State(
@@ -80,19 +81,23 @@ fun duoGame():State{
 val asteroids = listOf(
     Asteroid(160,160.0,"a1",
         spawnInBorder(),
-        Vector((1..3).random().toDouble(), (0..360).random().toDouble())
+        Vector((1..3).random().toDouble(), (0..360).random().toDouble()),
+        ImageRef(pickRandomColor(),160.0,160.0)
     ),
     Asteroid(70,70.0,"a2",
         spawnInBorder(),
-        Vector((1..3).random().toDouble(), (0..360).random().toDouble())
+        Vector((1..3).random().toDouble(), (0..360).random().toDouble()),
+        ImageRef(pickRandomColor(),70.0,70.0)
     ),
     Asteroid(100,100.0,"a3",
        spawnInBorder(),
-        Vector((1..3).random().toDouble(), (0..360).random().toDouble())
+        Vector((1..3).random().toDouble(), (0..360).random().toDouble()),
+        ImageRef(pickRandomColor(),100.0,100.0)
     ),
     Asteroid(70,70.0,"a4",
         spawnInBorder(),
-        Vector((1..3).random().toDouble(), (0..360).random().toDouble())
+        Vector((1..3).random().toDouble(), (0..360).random().toDouble()),
+        ImageRef(pickRandomColor(),70.0,70.0)
     )
 )
 
@@ -103,15 +108,23 @@ fun createAsteroid(movables: List<Movable>, id: String): List<Movable> {
         life.toDouble(),
         id,
         spawnInBorder(),
-        Vector((1..3).random().toDouble(), (0..360).random().toDouble())
+        Vector((1..3).random().toDouble(), (0..360).random().toDouble()),
+        ImageRef(pickRandomColor(),life.toDouble(),life.toDouble())
     )
     return movables.plus(asteroid)
 }
 
+private fun pickRandomColor():String{
+    return when((0..2).random()){
+        0-> "blueBalloon"
+        1-> "redBalloon"
+        else -> "greenBalloon"
+    }
+}
+
 
 fun spawnInBorder(): Coordinates {
-    val side= (0..3).random()
-    return when(side){
+    return when((0..3).random()){
         0-> Coordinates(0.0,(0..HEIGHT.toInt()).random().toDouble())
         1-> Coordinates((0..WIDTH.toInt()).random().toDouble(),0.0)
         2-> Coordinates(WIDTH,(0..HEIGHT.toInt()).random().toDouble())
