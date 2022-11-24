@@ -4,6 +4,8 @@ import adapter.Adapter
 import model.Bullet
 import model.Gun
 import model.Starship
+import utils.BULLET_DAMAGE
+import utils.BULLET_SPEED
 import utils.PAPER_BULLET
 import kotlin.math.cos
 import kotlin.math.sin
@@ -16,8 +18,8 @@ class ClassicGun ():Gun{
          return listOf(Bullet(
                          Coordinates(xPosition,yPosition),
                          "b" + (0..1000).random(),
-                         Vector(10.0,starship.vector.rotation),
-                         (10..50).random(),
+                         Vector(BULLET_SPEED,starship.vector.rotation),
+                         BULLET_DAMAGE,
                          PAPER_BULLET,
                          starship.idShip
                      )

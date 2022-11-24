@@ -2,6 +2,8 @@ package model
 
 import edu.austral.ingsis.starships.model.Coordinates
 import edu.austral.ingsis.starships.model.Vector
+import utils.BULLET_DAMAGE
+import utils.BULLET_SPEED
 import utils.PAPER_BULLET
 
 
@@ -16,16 +18,16 @@ class DoubleGun():Gun {
             Bullet(
                 Coordinates(xPosition1,yPosition1),
                 "b" + (0..1000).random(),
-                Vector(10.0,starship.vector.rotation-45),
-                (10..50).random(),
+                Vector(BULLET_SPEED,starship.vector.rotation-45),
+                BULLET_DAMAGE,
                 PAPER_BULLET,
                 starship.idShip
             ),
             Bullet(
                 Coordinates(xPosition2,yPosition2),
                 "b" + (0..1000).random(),
-                Vector(10.0,starship.vector.rotation+45),
-                (10..50).random(),
+                Vector(BULLET_SPEED,starship.vector.rotation+45),
+                BULLET_DAMAGE,
                 PAPER_BULLET,
                 starship.idShip
             )

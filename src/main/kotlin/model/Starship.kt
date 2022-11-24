@@ -2,6 +2,7 @@ package model
 import edu.austral.ingsis.starships.model.Coordinates
 import edu.austral.ingsis.starships.model.Vector
 import edu.austral.ingsis.starships.ui.ImageRef
+import utils.COLLIDE_DAMAGE
 
 data class Starship(
     val life: Int,
@@ -19,8 +20,8 @@ data class Starship(
 
     override fun collide(collider: Movable): Starship {
         return when(collider){
-            is Asteroid -> copy(life = life-10,vector=Vector(-vector.speed,vector.rotation));
-            is Starship -> copy( life = life-10);
+            is Asteroid -> copy(life = life- COLLIDE_DAMAGE,vector=Vector(-vector.speed,vector.rotation));
+            is Starship -> copy( life = life- COLLIDE_DAMAGE);
             is Bullet -> copy(life= life-(collider as Bullet).damage)
             else -> this
         }

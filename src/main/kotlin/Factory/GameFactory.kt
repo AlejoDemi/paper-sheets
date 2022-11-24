@@ -13,7 +13,7 @@ fun soloGame(): State {
         "s1",
         Vector(0.0,0.0),
         PAPER_PLANE,
-        DOUBLE_GUN
+        SOLO_GUN
     )
     val movables = listOf<Movable>(starship)
     val state =  State(
@@ -42,7 +42,7 @@ fun duoGame():State{
         "s1",
         Vector(0.0,0.0),
         BLUE_PAPER_PLANE,
-        CLASSIC_GUN
+        DUO_1_GUN
     )
     val starship2 = Starship(
         LIVES,
@@ -50,7 +50,7 @@ fun duoGame():State{
         "s2",
         Vector(0.0,0.0),
         RED_PAPER_PLANE,
-        CLASSIC_GUN
+        DUO_2_GUN
     )
     val movables = listOf<Movable>(starship1,starship2)
     val state =  State(
