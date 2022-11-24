@@ -128,7 +128,6 @@ class Starships() : Application() {
         options.children.addAll(onePlayer, twoPlayer)
         layout.children.addAll(name, options)
 
-        //rebota en 950,700
         facade.start()
         facade.showCollider.set(false)
         keyTracker.start()
