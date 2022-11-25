@@ -4,3 +4,11 @@
     -fx-background-size: cover;
     -fx-background-position: center center;
 }
+
+#game{
+    -fx-background-image: url("background1.jpg");
+    -fx-background-repeat: stretch;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+

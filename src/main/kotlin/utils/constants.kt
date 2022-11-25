@@ -1,5 +1,6 @@
 package utils
 
+import Factory.GunType
 import edu.austral.ingsis.starships.model.ClassicGun
 import edu.austral.ingsis.starships.model.Coordinates
 import edu.austral.ingsis.starships.ui.ImageRef
@@ -44,9 +45,8 @@ val PLAYER_2_SHOOT = KeyCode.E
 val PLAYER_PAUSE = KeyCode.P
 
 //GUNS
-val SOLO_GUN = DoubleGun()
-val ALT_GUN = TripleGun()
-val DUO_1_GUN = ClassicGun()
-val DUO_2_GUN = ClassicGun()
+val SOLO_GUN = GunType.TRIPLE
+val DUO_1_GUN = GunType.CLASSIC
+val DUO_2_GUN = GunType.CLASSIC
 
 

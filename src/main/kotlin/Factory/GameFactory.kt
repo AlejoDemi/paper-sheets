@@ -1,4 +1,5 @@
 package Factory
+import edu.austral.ingsis.starships.model.ClassicGun
 import model.*
 import edu.austral.ingsis.starships.model.Coordinates
 import edu.austral.ingsis.starships.model.Vector
@@ -7,6 +8,11 @@ import utils.*
 
 
 fun soloGame(): State {
+    val gun1 = when(SOLO_GUN){
+        GunType.CLASSIC->ClassicGun()
+        GunType.DOUBLE->DoubleGun()
+        else -> TripleGun()
+    }
 
     val starship = Starship(
         LIVES,
@@ -14,7 +20,7 @@ fun soloGame(): State {
         "s1",
         Vector(0.0,0.0),
         PAPER_PLANE,
-        SOLO_GUN
+        gun1
     )
     val movables = listOf<Movable>(starship)
     val state =  State(
@@ -37,13 +43,23 @@ fun soloGame(): State {
 
 
 fun duoGame():State{
+    val gun1 = when(DUO_1_GUN){
+        GunType.CLASSIC->ClassicGun()
+        GunType.DOUBLE->DoubleGun()
+        else -> TripleGun()
+    }
+    val gun2 = when(DUO_2_GUN){
+        GunType.CLASSIC->ClassicGun()
+        GunType.DOUBLE->DoubleGun()
+        else -> TripleGun()
+    }
     val starship1 = Starship(
         LIVES,
         LEFT_SIDE,
         "s1",
         Vector(0.0,0.0),
         BLUE_PAPER_PLANE,
-        DUO_1_GUN
+        gun1
     )
     val starship2 = Starship(
         LIVES,
@@ -51,7 +67,7 @@ fun duoGame():State{
         "s2",
         Vector(0.0,0.0),
         RED_PAPER_PLANE,
-        ALT_GUN
+        gun2
     )
     val movables = listOf<Movable>(starship1,starship2)
     val state =  State(
@@ -133,4 +149,10 @@ fun spawnInBorder(): Coordinates {
             Coordinates(0.0,0.0)
         }
     }
+}
+
+enum class GunType{
+    CLASSIC,
+    DOUBLE,
+    TRIPLE
 }

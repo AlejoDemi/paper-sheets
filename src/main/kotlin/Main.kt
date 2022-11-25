@@ -75,10 +75,10 @@ class Starships() : Application() {
 
         val root = facade.view
         pane.children.addAll(root,lives)
-        root.id = "pane"
+        root.id = "game"
         val scene = Scene(layout)
         keyTracker.scene = scene
-        scene.stylesheets.add(this::class.java.classLoader.getResource("styles.css")?.toString())
+        scene.stylesheets.add(this::class.java.classLoader.getResource("menu.css")?.toString())
         scene.stylesheets.add("https://fonts.googleapis.com/css2?family=VT323&display=swap")
         primaryStage.scene = scene
         primaryStage.height = HEIGHT
